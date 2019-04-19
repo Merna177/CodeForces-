@@ -1,0 +1,33 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#include <iostream>
+#include <stack>
+#include <unordered_map>
+using namespace std;
+///YOU CAN DO IT ACPC2018!!
+///Take a risk dont always play it safe or you will die wondering !!
+
+int main()
+{
+  int n;
+  scanf("%d",&n);
+  string s;
+  cin>>s;
+  string goal = "ACTG";
+  int mn=1e9,cnt=1e9,index=0;
+  for(int i=0;i<s.size()-3;i++){
+    cnt=0;
+    index=0;
+    for(int j=i;j<i+4;j++){
+      int op1=abs(goal[index]-s[j]);
+      int op2= abs('Z'-s[j])+1+abs('A'-goal[index]);
+      int op3 = abs('A'-s[j])+1+abs('Z'-goal[index]);
+      index++;
+      cnt+= min(op1,min(op2,op3));
+
+    }
+    mn=min(mn,cnt);
+  }
+  printf("%d",mn);
+}
+
